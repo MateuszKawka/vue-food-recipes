@@ -1,32 +1,19 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Menu />
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import {ACTIONS_TYPES} from "@/store/types";
+import Menu from "@/components/Menu"
+export default  {
+  components: {
+    Menu
+  },
+  mounted() {
+    this.$store.dispatch(ACTIONS_TYPES.GET_RANDOM_RECIPE)
   }
 }
-</style>
+</script>

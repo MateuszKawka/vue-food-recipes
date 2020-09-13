@@ -1,0 +1,6 @@
+@import "custom";
+@import 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;600;700&display=swap');
+$family-sans-serif: "Quicksand";
+$primary: $details-color;
+@import "../../node_modules/bulma/bulma.sass";
