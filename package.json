@@ -21,6 +21,7 @@
     "vue-awesome-swiper": "^4.1.1",
     "vue-bulma-accordion": "^0.5.2",
     "vue-carousel": "^0.18.0",
+    "vue-lazyload": "^1.3.3",
     "vue-material-design-icons": "^4.9.0",
     "vue-notification": "^1.3.20",
     "vue-read-more": "^1.1.1",

@@ -9,11 +9,11 @@ import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css'
 import Notifications from 'vue-notification'
 import 'swiper/swiper-bundle.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-
+import VueLazyload from 'vue-lazyload'
 
 Vue.config.productionTip = false
 Vue.use(Notifications)
-
+Vue.use(VueLazyload)
 
 
 

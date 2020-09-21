@@ -11,7 +11,7 @@
           class="my-4 recipe-search-list__item is-rounded"
           @click="goToFullRecipe(item.idMeal)"
         >
-          <img :src="getImageThumb(item)" class="image is-128x128 mr-2" />
+          <img v-lazy="getImageThumb(item)" class="image is-128x128 mr-2" />
           <p class="pr-2 has-text-right">{{ item.strMeal }}</p>
         </li>
       </ul>

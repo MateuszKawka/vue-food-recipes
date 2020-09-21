@@ -1,7 +1,7 @@
 <template>
   <div @click="goToFullRecipe" class="short-recipe-container">
     <div class="short-recipe">
-        <img :src="recipe.strMealThumb" class="short-recipe__image"/>
+        <img v-lazy="recipe.strMealThumb" class="short-recipe__image"/>
 
         <div class="short-recipe__content">
       <p class="title is-4 mt-1 has-text-white">{{ recipe.strMeal }}</p>
