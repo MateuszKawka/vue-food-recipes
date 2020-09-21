@@ -1,45 +1,56 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-Vue.use(VueRouter)
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
+import { APP_PATH } from "./path";
+Vue.use(VueRouter);
 
-  const routes = [
+const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: APP_PATH.BASE.PATH,
+    name: APP_PATH.BASE.NAME,
+    component: Home,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: APP_PATH.RECIPE.PATH,
+    name: APP_PATH.RECIPE.NAME,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/FullRecipeView.vue"),
   },
-
-    {
-      path: '/random',
-      name: 'Random',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/RandomView.vue')
-    },
-    {
-      path: '/recipe',
-      name: 'Recipe',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/FullRecipeView.vue')
-    }
-]
+  {
+    path: APP_PATH.CATEGORY.PATH,
+    name: APP_PATH.CATEGORY.NAME,
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "../views/ExploreByCategories.vue"
+      ),
+  },
+  {
+    path: APP_PATH.CATEGORIES.PATH,
+    name: APP_PATH.CATEGORIES.NAME,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/CategoriesView.vue"),
+  },
+  {
+    path: APP_PATH.SAVED_RECIPES.PATH,
+    name: APP_PATH.SAVED_RECIPES.NAME,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/SavedRecipesView.vue"),
+  },
+  {
+    path: APP_PATH.AREA.PATH,
+    name: APP_PATH.AREA.NAME,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ExploreByArea.vue"),
+  }
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

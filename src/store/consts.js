@@ -1,0 +1,9 @@
+export const API_KEY = "1";
+export const BASIC_PATH = `https://www.themealdb.com/api/json/v1/${API_KEY}`;
+export const GET_RECIPE_PATH = `${BASIC_PATH}/lookup.php?i=`;
+export const GET_RANDOM_PATH = `${BASIC_PATH}/random.php`;
+export const GET_ALL_CATEGORIES_PATH = `${BASIC_PATH}/categories.php`;
+export const SEARCH_RECIPE_BY_NAME_PATH = `${BASIC_PATH}/search.php?s=`;
+export const GET_RECIPES_BY_CATEGORY_PATH = `${BASIC_PATH}/filter.php?c=`;
+export const GET_AREAS_LIST = `${BASIC_PATH}/list.php?a=list`
+export const GET_RECIPES_BY_AREA_PATH = `${BASIC_PATH}/filter.php?a=`

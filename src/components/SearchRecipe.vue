@@ -1,40 +1,58 @@
 <template>
-  <form  class="form">
-    <div class="field">
-      <label class="label">Recipe name</label>
-      <div class="control">
-        <input class="input" type="text" placeholder="Text input" v-model="recipeSearchQuery" @input="searchRecipe">
+  <form class="form">
+    <div class="field ">
+      <div class="control is-expanded" :class="{ 'is-loading': isLoading }">
+        <input
+          class="input is-fullwidth is-secondary"
+          type="text"
+          placeholder="Recipe name"
+          v-model="recipeSearchQuery"
+          @input="searchRecipe"
+        />
       </div>
     </div>
   </form>
 </template>
 
 <script>
-import {ACTIONS_TYPES, MUTATIONS_TYPES} from "@/store/types";
-import debounce from "lodash.debounce"
+import { ACTIONS_TYPES, MUTATIONS_TYPES } from "@/store/types";
+import _ from "lodash";
+
 export default {
   name: "SearchRecipe",
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
   computed: {
     recipeSearchQuery: {
       get() {
-        return this.$store.state.recipeSearchQuery
+        return this.$store.state.recipeSearchQuery;
       },
       set(newValue) {
-        this.$store.commit(MUTATIONS_TYPES.SET_RECIPE_SEARCH_QUERY, newValue)
-      }
-    }
+        this.$store.commit(MUTATIONS_TYPES.SET_RECIPE_SEARCH_QUERY, newValue);
+      },
+    },
   },
   methods: {
-    searchRecipe() {
-      console.log('bump')
-      debounce(function() {
-        this.$store.dispatch(ACTIONS_TYPES.SEARCH_RECIPE_BY_NAME)
-      }, 100)
+    searchRecipe: _.debounce(async function() {
+      if (this.recipeSearchQuery.length > 1) {
+        this.isLoading = true;
+        await this.$store.dispatch(ACTIONS_TYPES.SEARCH_RECIPE_BY_NAME);
+        this.isLoading = false;
+      } else {
+        this.$store.commit(MUTATIONS_TYPES.CLEAR_RECIPE_LIST);
+      }
+    }, 500),
+    showSearchList(e) {
+      console.log("blur", e.target);
+    },
+    hideSearchList() {
+
     }
-  }
-}
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

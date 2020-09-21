@@ -1,15 +1,15 @@
 <template>
 <section class="">
-  <RecipeFull />
+  <FullRecipe />
 </section>
 </template>
 
 <script>
-import RecipeFull from "@/components/RecipeFull";
+import FullRecipe from "@/components/FullRecipe";
 export default {
   name: "FullRecipeView",
   components: {
-    RecipeFull
+    FullRecipe
   }
 }
 </script>

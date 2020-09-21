@@ -1,6 +1,11 @@
-@import "custom";
-@import 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;600;700&display=swap');
-$family-sans-serif: "Quicksand";
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&display=swap');
+$family-sans-serif: "Roboto";
 $primary: $details-color;
+$modal-card-head-background-color: #fff;
+$section-padding: 1.6rem 1rem;
+$text: #0b0a0a;
+
 @import "../../node_modules/bulma/bulma.sass";
+@import '~bulma-pageloader';
