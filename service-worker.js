@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.21c00852bc420641145cb140a8044f46.js"
+  "/vue-food-recipes/precache-manifest.ded2bbbf3a184c87ff65a467769fe64c.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "food-recipes-vue"});
