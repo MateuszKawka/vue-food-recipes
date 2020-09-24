@@ -49,6 +49,10 @@ export default {
   transform: scale(1);
 }
 
+.short-recipe__image {
+  width: 100%;
+}
+
 .short-recipe__content {
   width: 100%;
   height: 100%;

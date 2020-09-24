@@ -21,7 +21,7 @@ export default {
     return {
       APP_PATH,
       swiperOption: {
-        slidesPerView: 3,
+        slidesPerView: 4,
         spaceBetween: 48,
         freeMode: true,
         loop: true,
@@ -54,7 +54,7 @@ export default {
 }
 
 .category-button {
-  min-width: 92px;
+  min-width: 64px;
   height: auto;
 }
 

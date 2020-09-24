@@ -6,5 +6,5 @@ module.exports = {
       },
     },
   },
-  publicPath: '/vue-food-recipes/'
+  // publicPath: '/vue-food-recipes/'
 };

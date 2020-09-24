@@ -13,6 +13,7 @@ export default {
         .then(() => commit(MUTATIONS_TYPES.SET_IS_LOADING, false));
     },
     [ACTIONS_TYPES.GET_RANDOM_RECIPE]({ commit }) {
+      commit(MUTATIONS_TYPES.CLEAR_RECIPE)
       commit(MUTATIONS_TYPES.SET_IS_LOADING, true);
       fetch(`${GET_RANDOM_PATH}`)
         .then((res) => res.json())

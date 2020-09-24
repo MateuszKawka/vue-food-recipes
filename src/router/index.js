@@ -41,6 +41,12 @@ const routes = [
     name: APP_PATH.AREA.NAME,
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ExploreByArea.vue"),
+  },
+  {
+    path: APP_PATH.AREAS.PATH,
+    name: APP_PATH.AREAS.NAME,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/AreasView.vue"),
   }
 ];
 

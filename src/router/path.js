@@ -23,8 +23,12 @@ export const APP_PATH = {
     PATH: "/saved",
     NAME: "Saved",
   },
+  AREAS: {
+    PATH: "/areas",
+    NAME: "Areas"
+  },
   AREA: {
-    PATH: "/area/:area",
+    PATH: "/areas/:area",
     NAME: "Area"
   }
 };

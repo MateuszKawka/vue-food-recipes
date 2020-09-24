@@ -1,6 +1,5 @@
 <template>
-  <form class="form">
-    <div class="field ">
+    <div class="field">
       <div class="control is-expanded" :class="{ 'is-loading': isLoading }">
         <input
           class="input is-fullwidth is-secondary"
@@ -11,7 +10,6 @@
         />
       </div>
     </div>
-  </form>
 </template>
 
 <script>

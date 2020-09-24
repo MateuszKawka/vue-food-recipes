@@ -1,7 +1,12 @@
 <template>
     <section class="section">
         <h2 class="is-size-5 my-5 has-text-centered has-text-weight-bold">{{area}}</h2>
-        <PreviewRecipe v-for="recipe in recipeList" :key="recipe.strMeal" :recipe="recipe"/>
+        <div class="columns is-multiline">
+            <div class="column is-12-mobile is-4-tablet is-offset-tablet" v-for="recipe in recipeList" :key="recipe.strMeal">
+                <PreviewRecipe :recipe="recipe"/>
+            </div>
+        </div>
+    
     </section>
 </template>
 

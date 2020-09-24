@@ -1,28 +1,28 @@
 <template>
   <section class="section px-5">
-    <h1 class="is-size-5 my-5 has-text-centered has-text-weight-bold">
-      Food recipes
-    </h1>
-    <SearchRecipe />
-    <div class=" pt-5 is-flex">
-      <router-link
-        tag="a"
-        class="button is-small is-primary is-outlined"
-        :to="APP_PATH.CATEGORIES.PATH"
-        >Categories details</router-link
-      >
-      <router-link
+    <div>
+      <h1 class="is-size-5 my-5 has-text-centered has-text-weight-bold">
+        Food recipes
+      </h1>
+     <div class="is-flex mb-5">
+        <router-link
         tag="button"
-        class="button is-primary  is-small is-outlined"
+        class="button is-primary  is-small is-outlined mr-2"
         :to="APP_PATH.SAVED_RECIPES.PATH"
         >Saved recipes</router-link
       >
+      <BrowseDropdown class="ml-2"/>
+     </div>
     </div>
+
+    <SearchRecipe />
+
     <SearchList v-if="showSearchList" />
     <CategoriesPicker />
-    <AreasPicker />
     <div class="my-5">
-      <h2 class="is-size-5 my-5 has-text-centered has-text-weight-bold">Random recipe</h2>
+      <h2 class="is-size-5 my-5 has-text-centered has-text-weight-bold">
+        Random recipe
+      </h2>
       <PreviewRecipe :recipe="recipe" />
     </div>
   </section>
@@ -33,7 +33,7 @@ import SearchRecipe from "@/components/SearchRecipe";
 import PreviewRecipe from "@/components/PreviewRecipe";
 import SearchList from "@/components/RecipeSearchList";
 import CategoriesPicker from "@/components/CategoriesPicker";
-import AreasPicker from "@/components/AreasPicker"
+import BrowseDropdown from "@/components/BrowseDropdown";
 import { ACTIONS_TYPES, MUTATIONS_TYPES } from "@/store/types";
 import { APP_PATH } from "@/router/path";
 
@@ -44,7 +44,7 @@ export default {
     PreviewRecipe,
     SearchList,
     CategoriesPicker,
-    AreasPicker
+    BrowseDropdown,
   },
   data() {
     return {
@@ -65,7 +65,6 @@ export default {
   mounted() {
     this.$store.dispatch(ACTIONS_TYPES.GET_RANDOM_RECIPE);
     this.$store.commit(MUTATIONS_TYPES.CLEAR_RECIPES_LIST);
-    this.$store.dispatch(ACTIONS_TYPES.GET_AREAS)
   },
 };
 </script>

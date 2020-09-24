@@ -9,6 +9,7 @@ export default  {
   [MUTATIONS_TYPES.SET_IS_LOADING]: (state, isLoading) =>
     (state.isLoading = isLoading),
   [MUTATIONS_TYPES.CLEAR_RECIPES_LIST]: (state) => (state.recipesList = []),
+  [MUTATIONS_TYPES.CLEAR_RECIPE] : (state) => state.recipe = {},
   [MUTATIONS_TYPES.SET_RECIPES_CATEGORIES]: (state, categories) =>
     (state.recipesCategories = categories),
   [MUTATIONS_TYPES.SET_PICKED_CATEGORY]: (state, category) =>
