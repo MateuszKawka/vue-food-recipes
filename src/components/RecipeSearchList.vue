@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 .recipe-search-list-container {
-  width: 100%;
+  width: 80%;
   position: relative;
 }
 
@@ -76,5 +76,11 @@ export default {
 
 .close-button span {
   color: $details-color;
+}
+
+@media (min-width: $medium-breakpoint) {
+  .recipe-search-list-container {
+    width: 50%;
+  }
 }
 </style>

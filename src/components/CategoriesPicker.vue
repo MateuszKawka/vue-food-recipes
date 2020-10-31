@@ -21,7 +21,7 @@ export default {
     return {
       APP_PATH,
       swiperOption: {
-        slidesPerView: 4,
+        slidesPerView: 2,
         spaceBetween: 48,
         freeMode: true,
         loop: true,
@@ -29,6 +29,15 @@ export default {
           el: ".swiper-pagination",
           clickable: true,
         },
+        breakpoints:{
+          400: {
+            slidesPerView: 4,
+            spaceBetween: 24
+          },
+          1200:{
+            slidesPerView: 8,
+          }
+        }
       },
     };
   },
@@ -48,7 +57,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .categories {
   width: 100%;
 }
@@ -63,5 +72,11 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (min-width: $medium-breakpoint) {
+  .categoriesr {
+    width: 50%;
+  }
 }
 </style>

@@ -4,10 +4,10 @@
       <div class="container">
         <div class="header">
           <div
-            :style="
+              :style="
               `background: url(${recipe.strMealThumb}) center no-repeat;background-size: cover`
             "
-            class="recipe__image"
+              class="recipe__image"
           ></div>
           <div class="header__content">
             <h2 class="title has-text-centered has-text-white mt-5">
@@ -25,17 +25,17 @@
     </div>
     <div class="container px-5 mt-5">
       <transition
-        name="fade"
-        mode="out-in"
+          name="fade"
+          mode="out-in"
       >
-      <a
-        @click="bindIngredientsList"
-        class="ingredients-switcher is-vcentered has-text-right has-text-primary"
-      >
-        <ViewGridIcon v-if="ingredientsList" class="mr-2" />
-        <FormatListBulletedIcon class="mr-2" v-else />
-        {{ ingredientsList ? "Display as carousel" : "Display as list" }}</a
-      ></transition>
+        <a
+            @click="bindIngredientsList"
+            class="ingredients-switcher is-vcentered has-text-right has-text-primary"
+        >
+          <ViewGridIcon v-if="ingredientsList" class="mr-2"/>
+          <FormatListBulletedIcon class="mr-2" v-else/>
+          {{ ingredientsList ? "Display as carousel" : "Display as list" }}</a
+        ></transition>
     </div>
 
     <!-- <Carousel infinite :perPage="3" v-if="!ingredientsList" :paginationEnabled="false" class="ingredients px-3 mt-5">
@@ -57,49 +57,50 @@
           </div>
         </slide>
       </Carousel> -->
-
-    <swiper class="swiper mt-5" :options="swiperOption" v-if="!ingredientsList">
-      <swiper-slide
-        v-for="(item, index) in ingredients"
-        :key="`${item}__${index}`"
-      >
-        <div class="recipe-item">
-          <img
-            :src="
+    <div class="container">
+      <swiper class="swiper mt-5" :options="swiperOption" v-if="!ingredientsList">
+        <swiper-slide
+            v-for="(item, index) in ingredients"
+            :key="`${item}__${index}`"
+        >
+          <div class="recipe-item">
+            <img
+                :src="
               `https://www.themealdb.com/images/ingredients/${item}-Small.png`
             "
-          />
-          <p
-            class="is-size-6 has-text-weight-medium has-text-centered has-text-weight-semibold has-text-primary"
-          >
-            {{ item }}
-          </p>
-          <p class="has-text-weight-normal has-text-centered ">
-            {{ measures[index] }}
-          </p>
-        </div>
-      </swiper-slide>
-    </swiper>
-    <ul class="ingredients ingredients--list px-3 mt-5" v-else>
-      <li v-for="(item, index) in ingredients" :key="`${item}__${index}`">
-        <div class="recipe-item recipe-item--list">
-          <img
-            :src="
+            />
+            <p
+                class="is-size-6 has-text-weight-medium has-text-centered has-text-weight-semibold has-text-primary"
+            >
+              {{ item }}
+            </p>
+            <p class="has-text-weight-normal has-text-centered ">
+              {{ measures[index] }}
+            </p>
+          </div>
+        </swiper-slide>
+      </swiper>
+      <ul class="ingredients ingredients--list px-3 mt-5" v-else>
+        <li v-for="(item, index) in ingredients" :key="`${item}__${index}`">
+          <div class="recipe-item recipe-item--list">
+            <img
+                :src="
               `https://www.themealdb.com/images/ingredients/${item}-Small.png`
             "
-          />
-          <p>{{ item }}</p>
-          <p>{{ measures[index] }}</p>
-        </div>
-      </li>
-    </ul>
+            />
+            <p>{{ item }}</p>
+            <p>{{ measures[index] }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
 
     <div class="container px-5 py-5">
       <a
-        class="has-text-right export-recipe has-text-primary"
-        @click="exportIndgredients"
-        >Export as shopping list
-        <ImportIcon />
+          class="has-text-right export-recipe has-text-primary"
+          @click="exportIndgredients"
+      >Export as shopping list
+        <ImportIcon/>
       </a>
       <p class="my-6">{{ recipe.strInstructions }}</p>
     </div>
@@ -110,10 +111,11 @@
 import ImportIcon from "vue-material-design-icons/Import";
 import ViewGridIcon from "vue-material-design-icons/ViewGrid";
 import FormatListBulletedIcon from "vue-material-design-icons/FormatListBulleted";
-import { ACTIONS_TYPES } from "@/store/types";
-import { Carousel, Slide } from "vue-carousel";
+import {ACTIONS_TYPES} from "@/store/types";
+import {Carousel, Slide} from "vue-carousel";
 import jsPDF from 'jspdf'
 import JsPDFAutotable from "jspdf-autotable";
+
 export default {
   name: "RecipeFull",
   data() {
@@ -128,6 +130,14 @@ export default {
           el: ".swiper-pagination",
           clickable: true,
         },
+        breakpoints: {
+          600: {
+            slidesPerView: 4,
+          },
+          1000: {
+            slidesPerView: 6,
+          }
+        }
       },
     };
   },
@@ -148,14 +158,14 @@ export default {
     },
     ingredients() {
       return Object.keys(this.recipe)
-        .filter((key) => /Ingredient/.test(key))
-        .map((key) => this.recipe[key])
-        .filter(Boolean);
+          .filter((key) => /Ingredient/.test(key))
+          .map((key) => this.recipe[key])
+          .filter(Boolean);
     },
     measures() {
       return Object.keys(this.recipe)
-        .filter((key) => /Measure/.test(key))
-        .map((key) => this.recipe[key]);
+          .filter((key) => /Measure/.test(key))
+          .map((key) => this.recipe[key]);
     },
   },
   methods: {
@@ -163,25 +173,21 @@ export default {
       var doc = new jsPDF();
       doc.setFontSize(22);
       doc.setTextColor('#FC440F');
-      doc.text(20,10, `${this.recipe.strMeal}`)
+      doc.text(20, 10, `${this.recipe.strMeal}`)
       doc.setTextColor('#000');
       doc.setFontSize(16);
       this.ingredients.forEach((ingredient, i) => {
         doc.text(
-          20,
-          30 + i * 10,
-          `${i + 1}  ${this.measures[i]} ${ingredient}`
-          
+            20,
+            30 + i * 10,
+            `${i + 1}  ${this.measures[i]} ${ingredient}`
         );
       });
       doc.save(`${this.recipe.strMeal}_shopping_list.pdf`);
     },
     bindIngredientsList() {
       this.ingredientsList = !this.ingredientsList;
-    },
-    lolo() {
-      let doc = new jsPDF();
-    },
+    }
   },
   beforeMount() {
     this.$store.dispatch(ACTIONS_TYPES.GET_RECIPE, this.mealID);
@@ -190,9 +196,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.background {
-  background: #ff0022;
-}
+
 
 .full-recipe {
   // &:before {
